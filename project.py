@@ -1,3 +1,4 @@
+from re import M
 import pygame
 from random import randint
 from pygame.locals import *
@@ -8,9 +9,9 @@ import enemy as E
 
 pygame.init()
 
-screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((900, 600))
 background = pygame.image.load("store.png")
-background = pygame. transform. scale(background, (800, 600))
+background = pygame. transform. scale(background, (900, 700))
 
 
 FPS = 60
@@ -21,15 +22,13 @@ scoreY = 10
 font = pygame.font.SysFont('Comic Sans Ms', 35)
 
 lives_value = 3
-livesX = 660
+livesX = 770
 livesY = 10
 font1 = pygame.font.SysFont('Comic Sans Ms', 35)
 
 gameoverfont = pygame.font.SysFont('Comic Sans Ms', 50)
 gameover = gameoverfont.render("Gameover", True, (255, 0, 0))
 
-goX = 400
-goY = 300
 
 clock = pygame.time.Clock()
 
@@ -39,22 +38,22 @@ Enemies = pygame.sprite.Group()
 allSprites = pygame.sprite.Group()
 
 
-cheeseX = randint(0, 800)
+cheeseX = randint(0, 840)
 cheeseY = -5
 
-brocoliX = randint(0, 800)
+brocoliX = randint(0, 840)
 brocoliY = -8
 
-meatX = randint(0, 800)
+meatX = randint(0, 840)
 meatY = - 10
 
-bombX = randint(0, 800)
+bombX = randint(0, 840)
 bombY = -10
 
-nailX = randint(0, 800)
+nailX = randint(0, 840)
 nailY = -5
 
-scissorsX = randint(0, 800)
+scissorsX = randint(0, 840)
 scissorsY = -1
 
 cheese = F.Food("cheese.png", cheeseX, cheeseY)
@@ -96,7 +95,7 @@ enemyTimeCool = randint(110, 150)
 player1 = player.Player(300, 300)
 allSprites.add(player1)
 
-cart1 = cart.Cart(750, 550)
+cart1 = cart.Cart(850, 550)
 allSprites.add(cart1)
 
 
@@ -113,18 +112,8 @@ def show_lives(x, y):
 running = True
 while running:
 
-    if lives_value == 0:
-       for char in allSprites:
-           char.kill()
-           scoreX = 310
-           scoreY = 270
-    pygame.display.update()
-
-
-
     screen.blit(background, (0, 0))
-
-
+    
     foodTime += 1
     if foodTime == foodTimeCool:
         newFood_cheese = F.Food("cheese.png", randint(0, 770), -5)
@@ -183,6 +172,15 @@ while running:
     for sprite in allSprites:
         screen.blit(sprite.surf, sprite.rect)
 
+
+    if lives_value ==  0:
+            for char in allSprites:
+                char.kill()
+                scoreX = 370
+                scoreY = 220
+                screen.blit(background, (0, 0))
+            
+            
 
     show_score(scoreX, scoreY)
     show_lives(livesX, livesY)

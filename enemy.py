@@ -11,7 +11,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.centerx = x
         self.rect.centery = y
 
-        self.gravitiy = 2
+        self.gravity = randint(2, 5)
 
     def update(self):
         self.y += self.gravitiy

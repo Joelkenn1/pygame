@@ -18,7 +18,7 @@ class Player(pygame.sprite.Sprite):
             # decrement in x co-ordinate
             self.x -= self.speed
         # if left arrow key is pressed
-        if keys[pygame.K_d] and self.x < 800:
+        if keys[pygame.K_d] and self.x < 900:
             # increment in x co-ordinate
             self.x += self.speed
         # if left arrow key is pressed
@@ -26,7 +26,7 @@ class Player(pygame.sprite.Sprite):
             # decrement in y co-ordinate
             self.y -= self.speed
         # if left arrow key is pressed
-        if keys[pygame.K_s] and self.y < 600:
+        if keys[pygame.K_s] and self.y < 700:
             self.y += self.speed
         self.rect.centerx = round(self.x)
         self.rect.centery = round(self.y)
